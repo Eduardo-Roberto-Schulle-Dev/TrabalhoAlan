@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Pizzaria Caseira</h2>
+
+<table>
+    <tr>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Feito</th>
+    </tr>
+    @foreach (var Pizza in ViewBag.Tarefas)
+    {
+        <tr>
+            <td>@Pizza.Nome</td>
+            <td>@Pizza.Descricao</td>
+            <td>
+                @{
+                    var checkBoxId = "chk" + Guid.NewGuid(); // Unique ID for each checkbox
+                }
+                <input type="checkbox" id="@checkBoxId" name="IsSelected" @(Pizza.IsSelected ? "checked" : "") />
+                <label for="@checkBoxId"></label>
+            </td>
+        </tr>
+    }
+</table>
